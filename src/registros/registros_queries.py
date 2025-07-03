@@ -11,7 +11,7 @@ def obtener_registros():
     registros: list[Registro] = []
     if rows:
         for row in rows:
-            registros.append(Registro(row['id_maquina'], row['id_insumo'], row['fecha'], row['cantidad_usada']))
+            registros.append(Registro(row['id'], row['id_maquina'], row['id_insumo'], row['fecha'], row['cantidad_usada']))
     return registros
 
 def obtener_registro_por_id(id_registro: int):
@@ -23,7 +23,7 @@ def obtener_registro_por_id(id_registro: int):
 
     if row:
         r = row[0]
-        return Registro(r['id_maquina'], r['id_insumo'], r['fecha'], r['cantidad_usada'])
+        return Registro(r['id'], r['id_maquina'], r['id_insumo'], r['fecha'], r['cantidad_usada'])
     return None
 
 def crear_registro(registro: Registro):
