@@ -48,3 +48,19 @@ def eliminar_registro(id_registro: int):
     query = "DELETE FROM registro_consumo WHERE id = %s"
     db.execute_modification(query, (id_registro,))
     db.close_connection()
+
+def calcular_costos_insumos_mensuales(año: int, mes: int):
+    """Devuelve una lista de diccionarios con los costos totales de insumos por máquina en un mes específico."""
+    db = DatabaseConnection()
+    query = "SELECT rc.id_maquina, SUM(rc.cantidad_usada * i.precio_unitario) AS total_costo FROM registro_consumo rc JOIN insumos i ON rc.id_insumo = i.id WHERE YEAR(rc.fecha) = %s AND MONTH(rc.fecha) = %s GROUP BY rc.id_maquina "
+    costos = db.execute_query(query, (año, mes))
+    db.close_connection()
+    return costos
+
+def obtener_alquileres_mensuales():
+    """Devuelve una lista de alquileres fijos por máquina y cliente."""
+    db = DatabaseConnection()
+    query = "SELECT m.id_cliente, m.id AS id_maquina, m.costo_alquiler_mensual FROM maquinas m WHERE m.id_cliente IS NOT NULL"
+    alquileres = db.execute_query(query)
+    db.close_connection()
+    return alquileres
