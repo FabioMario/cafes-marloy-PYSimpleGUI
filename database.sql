@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS maquinas (
   id_cliente INT,
   ubicacion_cliente VARCHAR(255),
   costo_alquiler_mensual DECIMAL(10, 2) NOT NULL,
-  FOREIGN KEY (id_cliente) REFERENCES clientes(id) ON DELETE SET NULL
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id) ON DELETE SET NULL,
+  CONSTRAINT unico_cliente_ubicacion UNIQUE (id_cliente, ubicacion_cliente)
 );
 
 -- Registro de Consumo
