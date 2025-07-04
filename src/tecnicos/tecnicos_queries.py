@@ -48,3 +48,20 @@ def eliminar_tecnico(ci_tecnico: str):
     query = "DELETE FROM tecnicos WHERE ci = %s"
     db.execute_modification(query, (ci_tecnico,))
     db.close_connection()
+
+#5c. Consulta para reportes: Técnicos con más mantenimientos realizados.
+def tecnicos_mas_mantenimientos():
+    """Obtiene los tecnicos con más mantenimientos realizados."""
+    db = DatabaseConnection()
+    query = """
+        SELECT t.ci, CONCAT(t.nombre, ' ', t.apellido) AS tecnico, COUNT(m.id) AS total_mantenimientos
+        FROM tecnicos t
+        LEFT JOIN mantenimientos m ON t.ci = m.ci_tecnico
+        GROUP BY t.ci, t.nombre, t.apellido
+        ORDER BY total_mantenimientos DESC
+    """
+    tecnicos_mas_mantenimientos = db.execute_query(query)
+    db.close_connection()
+    
+    return tecnicos_mas_mantenimientos
+
