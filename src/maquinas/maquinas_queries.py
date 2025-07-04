@@ -49,3 +49,20 @@ def eliminar_maquina(id_maquina: int):
     query = "DELETE FROM maquinas WHERE id = %s"
     db.execute_modification(query, (id_maquina,))
     db.close_connection()
+
+#5d. Consulta para reportes: Clientes con más máquinas instaladas.
+def obtener_clientes_con_mas_maquinas(limit: int = 5):
+    """Obtiene los clientes con más máquinas instaladas, limitando el número de resultados."""
+    db = DatabaseConnection()
+    query = """
+        SELECT c.id, c.nombre, COUNT(m.id) AS cantidad_maquinas
+        FROM clientes c
+        LEFT JOIN maquinas m ON c.id = m.id_cliente
+        GROUP BY c.id, c.nombre
+        ORDER BY cantidad_maquinas DESC
+        LIMIT %s
+    """
+    Clientes_mas_maquinas = db.execute_query(query, (limit,))
+    db.close_connection()
+    
+    return Clientes_mas_maquinas
