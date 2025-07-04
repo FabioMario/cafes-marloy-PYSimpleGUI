@@ -49,18 +49,48 @@ def eliminar_registro(id_registro: int):
     db.execute_modification(query, (id_registro,))
     db.close_connection()
 
-def calcular_costos_insumos_mensuales(año: int, mes: int):
+def calcular_costos_insumos_mensuales(anio: int, mes: int):
     """Devuelve una lista de diccionarios con los costos totales de insumos por máquina en un mes específico."""
     db = DatabaseConnection()
     query = "SELECT rc.id_maquina, SUM(rc.cantidad_usada * i.precio_unitario) AS total_costo FROM registro_consumo rc JOIN insumos i ON rc.id_insumo = i.id WHERE YEAR(rc.fecha) = %s AND MONTH(rc.fecha) = %s GROUP BY rc.id_maquina "
-    costos = db.execute_query(query, (año, mes))
+    costos = db.execute_query(query, (anio, mes))
     db.close_connection()
     return costos
 
 def obtener_alquileres_mensuales():
-    """Devuelve una lista de alquileres fijos por máquina y cliente."""
+    """Devuelve una lista de alquileres fijos por máquina y cliente, incluyendo el nombre del cliente."""
     db = DatabaseConnection()
-    query = "SELECT m.id_cliente, m.id AS id_maquina, m.costo_alquiler_mensual FROM maquinas m WHERE m.id_cliente IS NOT NULL"
+    query = "SELECT c.id AS id_cliente, c.nombre AS nombre_cliente, m.id AS id_maquina, m.costo_alquiler_mensual FROM maquinas m JOIN clientes c ON m.id_cliente = c.id WHERE m.id_cliente IS NOT NULL ORDER BY c.nombre"
     alquileres = db.execute_query(query)
     db.close_connection()
     return alquileres
+
+def generar_reporte_facturacion_mensual(anio: int, mes: int):
+    """
+    Genera un reporte consolidado de facturación mensual por cliente usando una única consulta SQL.
+    El reporte incluye el total de alquileres, el total de insumos consumidos y el total a cobrar.
+    """
+    db = DatabaseConnection()
+    query = """
+        SELECT
+            c.id AS id_cliente,
+            c.nombre AS nombre_cliente,
+            COALESCE(SUM(m.costo_alquiler_mensual), 0) AS total_alquiler,
+            COALESCE(SUM(rc.cantidad_usada * i.precio_unitario), 0) AS total_insumos,
+            COALESCE(SUM(m.costo_alquiler_mensual), 0) + COALESCE(SUM(rc.cantidad_usada * i.precio_unitario), 0) AS total_a_cobrar
+        FROM
+            clientes c
+        LEFT JOIN
+            maquinas m ON c.id = m.id_cliente
+        LEFT JOIN
+            registro_consumo rc ON m.id = rc.id_maquina AND YEAR(rc.fecha) = %s AND MONTH(rc.fecha) = %s
+        LEFT JOIN
+            insumos i ON rc.id_insumo = i.id
+        GROUP BY
+            c.id, c.nombre
+        ORDER BY
+            c.nombre;
+    """
+    reporte = db.execute_query(query, (anio, mes))
+    db.close_connection()
+    return reporte
