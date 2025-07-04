@@ -49,6 +49,7 @@ def eliminar_registro(id_registro: int):
     db.execute_modification(query, (id_registro,))
     db.close_connection()
 
+#4b. Respetar las restricciones: Los consumos deben registrarse con fecha para permitir calculo de facturación mensual.
 def calcular_costos_insumos_mensuales(anio: int, mes: int):
     """Devuelve una lista de diccionarios con los costos totales de insumos por máquina en un mes específico."""
     db = DatabaseConnection()
@@ -57,6 +58,7 @@ def calcular_costos_insumos_mensuales(anio: int, mes: int):
     db.close_connection()
     return costos
 
+#3. Registrar el alquiler mensual fijo por máquina que se cobra a cada cliente.
 def obtener_alquileres_mensuales():
     """Devuelve una lista de alquileres fijos por máquina y cliente, incluyendo el nombre del cliente."""
     db = DatabaseConnection()
@@ -65,6 +67,7 @@ def obtener_alquileres_mensuales():
     db.close_connection()
     return alquileres
 
+#5a. Consultas para reportes: Total mensual a cobrar a cada cliente (suma de alquileres de maquinas mas costo de insumos consumidos).
 def generar_reporte_facturacion_mensual(anio: int, mes: int):
     """
     Genera un reporte consolidado de facturación mensual por cliente usando una única consulta SQL.
