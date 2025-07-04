@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS mantenimientos (
   fecha DATETIME NOT NULL,
   observaciones TEXT,
   FOREIGN KEY (id_maquina) REFERENCES maquinas(id) ON DELETE CASCADE,
-  FOREIGN KEY (ci_tecnico) REFERENCES tecnicos(ci) ON DELETE CASCADE
+  FOREIGN KEY (ci_tecnico) REFERENCES tecnicos(ci) ON DELETE CASCADE,
+  CONSTRAINT unico_tecnico_fecha UNIQUE (ci_tecnico, fecha)
 );
 
 -- Tecnicos
