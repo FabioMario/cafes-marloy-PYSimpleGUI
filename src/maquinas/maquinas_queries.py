@@ -1,4 +1,4 @@
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 from .maquinas import Maquina
 
 def obtener_maquinas():

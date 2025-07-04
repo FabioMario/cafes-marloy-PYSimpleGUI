@@ -1,5 +1,5 @@
 from .insumos import Insumos
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 
 
 def obtener_insumos():
@@ -53,6 +53,14 @@ def eliminar_insumo(id_insumo: int):
     db = DatabaseConnection()
     query = "DELETE FROM insumos WHERE id = %s"
     db.execute_modification(query, (id_insumo,))
+    db.close_connection()
+
+def modificar_insumo(insumo: Insumos):
+    """Modifica los datos de un insumo existente usando un objeto Insumo."""
+    db = DatabaseConnection()
+    query = "UPDATE insumos SET descripcion = %s, tipo = %s, precio_unitario = %s, id_proveedor = %s WHERE id = %s"
+    params = (insumo.descripcion, insumo.tipo, insumo.precio_unitario, insumo.id_proveedor, insumo.id)
+    db.execute_modification(query, params)
     db.close_connection()
 
 #5b. Consultas para reportes: Insumos con mayor consumo y costo.

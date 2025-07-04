@@ -1,6 +1,6 @@
 import hashlib
 import os
-from cafes_marloy_app.database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 
 salt_size = 64
 hash_size = 64

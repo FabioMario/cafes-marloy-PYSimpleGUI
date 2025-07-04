@@ -1,10 +1,10 @@
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 from .clientes import Cliente
 
 def obtener_clientes():
     """Obtiene todos los clientes y los devuelve como una lista de objetos Cliente."""
     db = DatabaseConnection()
-    query = "SELECT id, nombre, direccion, telefono, correo FROM clientes ORDER BY nombre"
+    query = "SELECT id, nombre, direccion, telefono, correo FROM clientes ORDER BY id"
     rows = db.execute_query(query)
     db.close_connection()
     

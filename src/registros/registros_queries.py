@@ -1,4 +1,4 @@
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 from .registros import Registro
 
 def obtener_registros():

@@ -1,131 +1,64 @@
--- Insertar proveedores
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 1', '+598 99567515');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 2', '+598 97861531');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 3', '+598 95190799');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 4', '+598 92411574');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 5', '+598 97666505');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 6', '+598 93261030');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 7', '+598 91064821');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 8', '+598 91877692');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 9', '+598 95727686');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 10', '+598 94510157');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 11', '+598 96758100');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 12', '+598 92532575');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 13', '+598 94199574');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 14', '+598 96869233');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 15', '+598 94194666');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 16', '+598 95958681');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 17', '+598 96716786');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 18', '+598 94496051');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 19', '+598 91752724');
-INSERT INTO proveedores (nombre, contacto) VALUES ('Proveedor 20', '+598 96313127');
+USE cafes_marloy_db;
 
--- Insertar insumos
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 1', 'Tipo 1', 31.33, 2);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 2', 'Tipo 2', 16.58, 3);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 3', 'Tipo 3', 66.03, 4);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 4', 'Tipo 4', 90.11, 5);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 5', 'Tipo 0', 58.93, 6);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 6', 'Tipo 1', 42.33, 7);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 7', 'Tipo 2', 99.28, 8);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 8', 'Tipo 3', 69.55, 9);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 9', 'Tipo 4', 55.24, 10);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 10', 'Tipo 0', 81.49, 11);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 11', 'Tipo 1', 22.19, 12);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 12', 'Tipo 2', 74.08, 13);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 13', 'Tipo 3', 78.33, 14);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 14', 'Tipo 4', 39.29, 15);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 15', 'Tipo 0', 60.45, 16);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 16', 'Tipo 1', 58.73, 17);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 17', 'Tipo 2', 10.11, 18);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 18', 'Tipo 3', 74.18, 19);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 19', 'Tipo 4', 81.05, 20);
-INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES ('Insumo 20', 'Tipo 0', 10.9, 1);
+-- Proveedores
+INSERT INTO proveedores (nombre, contacto) VALUES
+('Café de la Montaña S.A.', 'juan.perez@cafedelamontana.com'),
+('Distribuidora El Grano Dorado', 'info@granodorado.net'),
+('Insumos Lácteos del Sur', 'ventas@lacteosdelsur.uy'),
+('Azucarera Oriental', 'contacto@azucareraoriental.com'),
+('Repuestos y Servicios Express', 'servicio@repuestosysexpress.com'),
+('Importaciones de Café Colombiano', 'pedidos@cafeimportcol.com');
 
--- Insertar clientes
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Juan Rodríguez', 'Calle 1 N°10', '+598 94969826', 'juan_rodríguez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Sofía López', 'Calle 2 N°20', '+598 93352966', 'sofía_lópez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Carlos Díaz', 'Calle 3 N°30', '+598 95862708', 'carlos_díaz@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Diego Gómez', 'Calle 4 N°40', '+598 96410974', 'diego_gómez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('José Fernández', 'Calle 5 N°50', '+598 95290577', 'josé_fernández@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('María Fernández', 'Calle 6 N°60', '+598 94918477', 'maría_fernández@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('María García', 'Calle 7 N°70', '+598 91387791', 'maría_garcía@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Diego Gómez', 'Calle 8 N°80', '+598 95269122', 'diego_gómez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Juan Pérez', 'Calle 9 N°90', '+598 93300354', 'juan_pérez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Laura Martínez', 'Calle 10 N°100', '+598 96214981', 'laura_martínez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Lucía Díaz', 'Calle 11 N°110', '+598 97433128', 'lucía_díaz@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Diego López', 'Calle 12 N°120', '+598 93700051', 'diego_lópez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Laura Fernández', 'Calle 13 N°130', '+598 94434036', 'laura_fernández@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Carlos López', 'Calle 14 N°140', '+598 91481887', 'carlos_lópez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Juan Sánchez', 'Calle 15 N°150', '+598 98616713', 'juan_sánchez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Diego Díaz', 'Calle 16 N°160', '+598 94942242', 'diego_díaz@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Lucía Fernández', 'Calle 17 N°170', '+598 96235031', 'lucía_fernández@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('José Gómez', 'Calle 18 N°180', '+598 94406511', 'josé_gómez@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('Pedro Torres', 'Calle 19 N°190', '+598 94660944', 'pedro_torres@example.com');
-INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES ('José Fernández', 'Calle 20 N°200', '+598 97036882', 'josé_fernández@example.com');
+-- Insumos
+INSERT INTO insumos (descripcion, tipo, precio_unitario, id_proveedor) VALUES
+('Café en grano Arábica 1kg', 'Café', 25.50, 1),
+('Café en grano Robusta 1kg', 'Café', 22.00, 2),
+('Leche en polvo descremada 500g', 'Lácteo', 8.75, 3),
+('Azúcar blanca refinada 1kg', 'Endulzante', 2.50, 4),
+('Filtro de papel para cafetera', 'Repuesto', 15.00, 5),
+('Café molido descafeinado 500g', 'Café', 18.90, 6);
 
--- Insertar maquinas
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 1', 2, 'Sucursal 1', 3359.95);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 2', 3, 'Sucursal 2', 3449.93);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 3', 4, 'Sucursal 3', 4437.0);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 4', 5, 'Sucursal 4', 4923.55);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 5', 6, 'Sucursal 5', 1845.61);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 6', 7, 'Sucursal 6', 3646.1);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 7', 8, 'Sucursal 7', 4341.24);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 8', 9, 'Sucursal 8', 3030.88);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 9', 10, 'Sucursal 9', 1663.73);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 10', 11, 'Sucursal 10', 1098.86);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 11', 12, 'Sucursal 11', 4994.38);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 12', 13, 'Sucursal 12', 4285.05);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 13', 14, 'Sucursal 13', 2001.36);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 14', 15, 'Sucursal 14', 3891.86);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 15', 16, 'Sucursal 15', 2594.37);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 16', 17, 'Sucursal 16', 3006.75);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 17', 18, 'Sucursal 17', 3243.55);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 18', 19, 'Sucursal 18', 3364.46);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 19', 20, 'Sucursal 19', 4125.29);
-INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES ('Modelo 20', 1, 'Sucursal 20', 4909.99);
+-- Clientes
+INSERT INTO clientes (nombre, direccion, telefono, correo) VALUES
+('Oficina Legal & Asociados', 'Av. Principal 123, Piso 2', '099123456', 'compras@legalasociados.com'),
+('Clínica Bienestar', 'Calle Secundaria 456', '24005060', 'admin@clinicabienestar.uy'),
+('Universidad del Saber', 'Bulevar Universitario 789', '26001234', 'rectorado@universidadsaber.edu'),
+('Estudio Contable Moderno', 'Plaza Independencia 1', '098765432', 'contacto@contablemoderno.com'),
+('Hotel Gran Vista', 'Rambla Sur 1010', '29018090', 'gerencia@granvistahotel.com'),
+('Centro de Coworking Innova', 'Calle Ficticia 2020', '091234567', 'hola@innova.work');
 
--- Insertar tecnicos
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000001', 'Ana', 'García', '+598 91726080');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000002', 'Carlos', 'Pérez', '+598 91807343');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000003', 'Laura', 'Sánchez', '+598 92600510');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000004', 'Pedro', 'Fernández', '+598 91698400');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000005', 'Diego', 'López', '+598 93295904');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000006', 'José', 'Torres', '+598 96056634');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000007', 'Juan', 'Sánchez', '+598 91852370');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000008', 'Laura', 'Pérez', '+598 98089505');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000009', 'Ana', 'Pérez', '+598 98806159');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000010', 'Pedro', 'López', '+598 98709640');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000011', 'José', 'García', '+598 94325394');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000012', 'Sofía', 'Fernández', '+598 93337125');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000013', 'Carlos', 'Fernández', '+598 94266162');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000014', 'Sofía', 'Díaz', '+598 92798087');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000015', 'José', 'Torres', '+598 98685621');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000016', 'Carlos', 'López', '+598 94662491');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000017', 'José', 'López', '+598 97833983');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000018', 'Pedro', 'García', '+598 99609722');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000019', 'Carlos', 'López', '+598 96509033');
-INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES ('10000020', 'Juan', 'Rodríguez', '+598 95634613');
+-- Maquinas
+INSERT INTO maquinas (modelo, id_cliente, ubicacion_cliente, costo_alquiler_mensual) VALUES
+('Espresso Pro X1', 1, 'Recepción Piso 2', 150.00),
+('Latte Master 5000', 2, 'Sala de espera', 175.50),
+('Office Coffee Plus', 3, 'Cafetería Central', 120.00),
+('Compact Brew Mini', 4, 'Oficina Principal', 95.00),
+('Vending Coffee Max', 5, 'Lobby Principal', 250.00),
+('Single Cup Brewer', 6, 'Área Común', 80.00);
 
--- Insertar mantenimientos
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (2, '10000007', 'Revisión', '2025-06-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (3, '10000008', 'Revisión', '2024-08-30 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (4, '10000009', 'Revisión', '2025-01-01 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (5, '10000010', 'Revisión', '2025-05-06 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (6, '10000011', 'Revisión', '2024-09-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (7, '10000012', 'Revisión', '2025-04-14 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (8, '10000013', 'Revisión', '2024-09-02 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (9, '10000014', 'Revisión', '2025-01-11 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (10, '10000015', 'Revisión', '2024-08-05 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (11, '10000016', 'Revisión', '2025-03-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (12, '10000017', 'Revisión', '2025-02-06 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (13, '10000018', 'Revisión', '2024-07-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (14, '10000019', 'Revisión', '2025-04-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (15, '10000020', 'Revisión', '2025-02-28 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (16, '10000001', 'Revisión', '2025-02-27 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (17, '10000002', 'Revisión', '2024-09-30 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (18, '10000003', 'Revisión', '2025-03-16 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (19, '10000004', 'Revisión', '2024-12-03 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (20, '10000005', 'Revisión', '2025-04-16 00:25:18', 'Sin observaciones.');
-INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES (1, '10000006', 'Revisión', '2024-09-13 00:25:18', 'Sin observaciones.');
+-- Tecnicos
+INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES
+('4.123.456-7', 'Carlos', 'Rodríguez', '099887766'),
+('5.987.654-3', 'Ana', 'García', '098112233'),
+('3.876.543-2', 'Luis', 'Martínez', '097554433'),
+('4.567.890-1', 'María', 'Fernández', '096998877'),
+('2.345.678-9', 'Pedro', 'López', '095123123'),
+('4.789.012-3', 'Lucía', 'Gómez', '094567567');
+
+-- Registros de Consumo
+INSERT INTO registro_consumo (id_maquina, id_insumo, fecha, cantidad_usada) VALUES
+(1, 1, '2025-06-05', 5), -- Máquina 1 usó Café Arábica
+(2, 3, '2025-06-05', 2), -- Máquina 2 usó Leche en polvo
+(3, 2, '2025-06-06', 8), -- Máquina 3 usó Café Robusta
+(4, 4, '2025-06-07', 10),-- Máquina 4 usó Azúcar
+(5, 1, '2025-06-08', 15),-- Máquina 5 usó Café Arábica
+(6, 6, '2025-06-09', 3); -- Máquina 6 usó Café descafeinado
+
+-- Mantenimientos
+INSERT INTO mantenimientos (id_maquina, ci_tecnico, tipo, fecha, observaciones) VALUES
+(1, '4.123.456-7', 'Preventivo', '2025-07-01 09:00:00', 'Limpieza general y calibración de molinillo.'),
+(2, '5.987.654-3', 'Correctivo', '2025-07-02 11:30:00', 'Reemplazo de la bomba de agua. Estaba defectuosa.'),
+(3, '3.876.543-2', 'Preventivo', '2025-07-02 15:00:00', 'Descalcificación y revisión de mangueras.'),
+(4, '4.567.890-1', 'Instalación', '2025-05-20 10:00:00', 'Instalación y configuración inicial de la máquina.'),
+(5, '2.345.678-9', 'Correctivo', '2025-06-15 14:00:00', 'El monedero no aceptaba monedas de $10. Se ajustó el sensor.'),
+(6, '4.789.012-3', 'Preventivo', '2025-07-03 08:30:00', 'Revisión periódica. Todo en orden.');

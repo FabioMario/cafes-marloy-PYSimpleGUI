@@ -1,4 +1,4 @@
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 from .tecnicos import Tecnico
 
 def obtener_tecnicos():

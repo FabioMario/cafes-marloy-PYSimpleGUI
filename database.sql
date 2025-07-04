@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS maquinas (
   ubicacion_cliente VARCHAR(255),
   costo_alquiler_mensual DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id) ON DELETE SET NULL,
-  CONSTRAINT unico_cliente_ubicacion UNIQUE (id_cliente, ubicacion_cliente)
+  CONSTRAINT unico_cliente_ubicacion UNIQUE (id_cliente, ubicacion_cliente) -- 4c. Respetar las restricciones: Una máquina sólo puede estar asignada a un cliente y una ubicación a la vez.
 );
 
 -- Registro de Consumo
@@ -55,6 +55,14 @@ CREATE TABLE IF NOT EXISTS registro_consumo (
   FOREIGN KEY (id_insumo) REFERENCES insumos(id) ON DELETE CASCADE
 );
 
+-- Tecnicos
+CREATE TABLE IF NOT EXISTS tecnicos (
+  ci VARCHAR(20) PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido VARCHAR(100) NOT NULL,
+  telefono VARCHAR(50)
+);
+
 -- Mantenimientos
 CREATE TABLE IF NOT EXISTS mantenimientos (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -65,13 +73,5 @@ CREATE TABLE IF NOT EXISTS mantenimientos (
   observaciones TEXT,
   FOREIGN KEY (id_maquina) REFERENCES maquinas(id) ON DELETE CASCADE,
   FOREIGN KEY (ci_tecnico) REFERENCES tecnicos(ci) ON DELETE CASCADE,
-  CONSTRAINT unico_tecnico_fecha UNIQUE (ci_tecnico, fecha)
-);
-
--- Tecnicos
-CREATE TABLE IF NOT EXISTS tecnicos (
-  ci VARCHAR(20) PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL,
-  apellido VARCHAR(100) NOT NULL,
-  telefono VARCHAR(50)
+  CONSTRAINT unico_tecnico_fecha UNIQUE (ci_tecnico, fecha) -- 4c. Respetar las restricciones: Un técnico puede realizar varios mantenimientos, pero no debe estarasignado a dos mantenimientos simultáneos (en el mismo día y hora, si seregistra).
 );

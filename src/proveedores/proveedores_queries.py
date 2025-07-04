@@ -1,4 +1,4 @@
-from ..database_connection import DatabaseConnection
+from database_connection import DatabaseConnection
 from .proveedores import Proveedor
 
 def obtener_proveedores():
