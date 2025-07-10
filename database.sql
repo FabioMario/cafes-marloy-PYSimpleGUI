@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS maquinas (
   ubicacion_cliente VARCHAR(255),
   costo_alquiler_mensual DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id) ON DELETE SET NULL,
-  CONSTRAINT unico_cliente_ubicacion UNIQUE (id_cliente, ubicacion_cliente) -- 4c. Respetar las restricciones: Una máquina sólo puede estar asignada a un cliente y una ubicación a la vez.
+  CONSTRAINT unico_cliente_ubicacion UNIQUE (id_cliente, ubicacion_cliente) -- 4a. Respetar las restricciones: Una máquina sólo puede estar asignada a un cliente y una ubicación a la vez.
 );
 
 -- Registro de Consumo

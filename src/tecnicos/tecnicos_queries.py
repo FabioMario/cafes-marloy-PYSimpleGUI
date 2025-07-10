@@ -4,7 +4,18 @@ from .tecnicos import Tecnico
 def obtener_tecnicos():
     """Obtiene todos los tecnicos y los devuelve como una lista de objetos Tecnico."""
     db = DatabaseConnection()
-    query = "SELECT ci, nombre, apellido, telefono FROM tecnicos ORDER BY apellido, nombre"
+    query = """
+        SELECT
+            ci, 
+            nombre, 
+            apellido, 
+            telefono
+        FROM
+            tecnicos
+        ORDER BY
+            apellido, 
+            nombre
+    """
     rows = db.execute_query(query)
     db.close_connection()
     
@@ -17,7 +28,17 @@ def obtener_tecnicos():
 def obtener_tecnico_por_ci(ci_tecnico: str):
     """Obtiene un tecnico por su CI y lo devuelve como un objeto Tecnico."""
     db = DatabaseConnection()
-    query = "SELECT ci, nombre, apellido, telefono FROM tecnicos WHERE ci = %s"
+    query = """
+        SELECT
+            ci, 
+            nombre, 
+            apellido, 
+            telefono
+        FROM
+            tecnicos
+        WHERE
+            ci = %s
+    """
     row = db.execute_query(query, (ci_tecnico,))
     db.close_connection()
     
@@ -29,7 +50,19 @@ def obtener_tecnico_por_ci(ci_tecnico: str):
 def crear_tecnico(tecnico: Tecnico):
     """Crea un nuevo tecnico en la base de datos a partir de un objeto Tecnico."""
     db = DatabaseConnection()
-    query = "INSERT INTO tecnicos (ci, nombre, apellido, telefono) VALUES (%s, %s, %s, %s)"
+    query = """
+        INSERT INTO tecnicos (
+            ci, 
+            nombre, 
+            apellido, 
+            telefono
+        ) VALUES (
+            %s, 
+            %s, 
+            %s, 
+            %s
+        )
+    """
     params = (tecnico.ci, tecnico.nombre, tecnico.apellido, tecnico.telefono)
     db.execute_modification(query, params)
     db.close_connection()
@@ -37,7 +70,16 @@ def crear_tecnico(tecnico: Tecnico):
 def modificar_tecnico(tecnico: Tecnico):
     """Modifica los datos de un tecnico existente usando un objeto Tecnico."""
     db = DatabaseConnection()
-    query = "UPDATE tecnicos SET nombre = %s, apellido = %s, telefono = %s WHERE ci = %s"
+    query = """
+        UPDATE
+            tecnicos
+        SET
+            nombre = %s, 
+            apellido = %s, 
+            telefono = %s
+        WHERE
+            ci = %s
+    """
     params = (tecnico.nombre, tecnico.apellido, tecnico.telefono, tecnico.ci)
     db.execute_modification(query, params)
     db.close_connection()
@@ -45,7 +87,12 @@ def modificar_tecnico(tecnico: Tecnico):
 def eliminar_tecnico(ci_tecnico: str):
     """Elimina un tecnico de la base de datos por su CI."""
     db = DatabaseConnection()
-    query = "DELETE FROM tecnicos WHERE ci = %s"
+    query = """
+        DELETE FROM
+            tecnicos
+        WHERE
+            ci = %s
+    """
     db.execute_modification(query, (ci_tecnico,))
     db.close_connection()
 
@@ -54,11 +101,20 @@ def tecnicos_mas_mantenimientos():
     """Obtiene los tecnicos con más mantenimientos realizados."""
     db = DatabaseConnection()
     query = """
-        SELECT t.ci, CONCAT(t.nombre, ' ', t.apellido) AS tecnico, COUNT(m.id) AS total_mantenimientos
-        FROM tecnicos t
-        LEFT JOIN mantenimientos m ON t.ci = m.ci_tecnico
-        GROUP BY t.ci, t.nombre, t.apellido
-        ORDER BY total_mantenimientos DESC
+        SELECT
+            tecnicos.ci,
+            CONCAT(tecnicos.nombre, ' ', tecnicos.apellido) AS tecnico,
+            COUNT(mantenimientos.id) AS total_mantenimientos
+        FROM
+            tecnicos
+        LEFT JOIN
+            mantenimientos ON tecnicos.ci = mantenimientos.ci_tecnico
+        GROUP BY
+            tecnicos.ci,
+            tecnicos.nombre,
+            tecnicos.apellido
+        ORDER BY
+            total_mantenimientos DESC;
     """
     tecnicos_mas_mantenimientos = db.execute_query(query)
     db.close_connection()
