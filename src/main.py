@@ -583,52 +583,59 @@ def execute_sql_console():
     """Permite a un administrador ejecutar consultas SQL directamente."""
     clear_screen()
     print("--- Consola SQL ---")
-    print("ADVERTENCIA: Está a punto de ejecutar consultas SQL directamente en la base de datos.")
-    print("Esto puede alterar o eliminar datos de forma permanente. Proceda con precaución.")
-    print("Ingrese su consulta. Para terminar, escriba la consulta y presione Enter.")
-    print("Ingrese /q para salir.")
+    print("Ingrese sus consultas SQL. Escriba /q para salir.")
 
-    try:
-        query = get_input("SQL> ", required=True)
+    while True:
+        try:
+            query = get_input("SQL> ", required=True)
+            if query.lower().strip() == '/q':
+                break 
 
-        db = DatabaseConnection()
-        if not db.connection:
-            print("No se pudo establecer la conexión con la base de datos.")
-            press_enter_to_continue()
-            return
+            db = DatabaseConnection()
+            if not db.connection:
+                print("No se pudo establecer la conexión con la base de datos.")
+                press_enter_to_continue()
+                continue
 
-        if query.strip().lower().startswith('select'):
-            results = db.execute_query(query)
-            db.close_connection()
-            if results is None:
-                print("\nLa consulta no se pudo ejecutar.")
-            elif not results:
-                print("\nLa consulta se ejecutó correctamente, pero no devolvió filas.")
-            else:
-                headers = results[0].keys()
-                col_widths = {h: len(h) for h in headers}
-                for row in results:
-                    for h in headers:
-                        col_widths[h] = max(col_widths[h], len(str(row[h])))
-                
-                header_line = " | ".join([h.ljust(col_widths[h]) for h in headers])
-                print("\n" + header_line)
-                print("-" * len(header_line))
+            try:
+                if query.strip().lower().startswith('select'):
+                    results = db.execute_query(query)
+                    if results is None:
+                        print("\nLa consulta no se pudo ejecutar.")
+                    elif not results:
+                        print("\nLa consulta se ejecutó correctamente, pero no devolvió filas.")
+                    else:
+                        headers = results[0].keys()
+                        col_widths = {h: len(h) for h in headers}
+                        for row in results:
+                            for h in headers:
+                                col_widths[h] = max(col_widths[h], len(str(row.get(h, ''))))
+                        
+                        header_line = " | ".join([h.ljust(col_widths[h]) for h in headers])
+                        print("\n" + header_line)
+                        print("-" * len(header_line))
 
-                for row in results:
-                    row_line = " | ".join([str(row[h]).ljust(col_widths[h]) for h in headers])
-                    print(row_line)
-        else:
-            last_id = db.execute_modification(query)
-            db.close_connection()
-            if last_id is not None:
-                print(f"Consulta de modificación ejecutada. Último ID insertado (si aplica): {last_id}")
+                        for row in results:
+                            row_line = " | ".join([str(row.get(h, '')).ljust(col_widths[h]) for h in headers])
+                            print(row_line)
+                else:
+                    last_id = db.execute_modification(query)
+                    if last_id is not None:
+                        print(f"Consulta de modificación ejecutada. Último ID insertado (si aplica): {last_id}")
+                    else:
+                        print("Consulta de modificación ejecutada.")
 
-    except CancelOperation:
-        print("\nSaliendo de la consola SQL.")
-    except Exception as e:
-        print(f"\nOcurrió un error inesperado: {e}")
-    
+            except Exception as e:
+                print(f"\nOcurrió un error al ejecutar la consulta: {e}")
+            finally:
+                db.close_connection()
+
+        except CancelOperation:
+            break
+        except Exception as e:
+            print(f"\nOcurrió un error inesperado en la consola: {e}")
+
+    print("\nSaliendo de la consola SQL.")
     press_enter_to_continue()
 
 def reports_menu():
